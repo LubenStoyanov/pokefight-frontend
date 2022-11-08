@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getAllPokemons = () =>
+export const getPokemons = (type) =>
   axios
-    .get(import.meta.env.VITE_API_URL + "pokemons")
+    .get(import.meta.env.VITE_API_URL + `pokemons/type/${type}`)
     .then((res) => res.data)
     .catch((error) => console.error(error));
 

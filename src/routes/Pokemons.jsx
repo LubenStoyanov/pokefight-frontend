@@ -1,10 +1,12 @@
 import React from "react";
 import { useLoaderData, Link } from "react-router-dom";
-import { getAllPokemons } from "../api/axios";
+import { getPokemons } from "../api/axios";
 
-export async function loader() {
+export async function loader({ params }) {
   try {
-    const pokemons = await getAllPokemons();
+    const { type } = params;
+    const pokemons = await getPokemons(type);
+    console.log(pokemons, type);
     return { pokemons };
   } catch (error) {
     console.error(error);
