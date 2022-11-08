@@ -8,6 +8,7 @@ import Pokemon, { loader as pokemonLoader } from "./routes/Pokemon";
 import Error from "./routes/Error";
 import "./index.css";
 import Select from "./routes/Select";
+import Fight, { loader as fightLoader } from "./routes/Fight";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
     path: "/pokemons/:id",
     element: <Pokemon />,
     loader: pokemonLoader,
+  },
+  {
+    path: "/fight/:pokemon",
+    element: <Fight />,
+    loader: fightLoader,
   },
 ]);
 
