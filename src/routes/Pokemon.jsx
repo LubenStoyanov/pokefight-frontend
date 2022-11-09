@@ -39,7 +39,7 @@ export default function Pokemon() {
           </Stat>
         ))}
       </HStack>
-      <Link to={`/fight/${pokemon}`}>
+      <Link to={`/fight/${pokemon.id}`}>
         <Button>Go fight!</Button>
       </Link>
     </VStack>

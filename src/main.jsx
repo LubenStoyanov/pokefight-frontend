@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     loader: pokemonLoader,
   },
   {
-    path: "/fight/:pokemon",
+    path: "/fight/:id",
     element: <Fight />,
     loader: fightLoader,
   },
