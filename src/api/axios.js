@@ -17,3 +17,9 @@ export const getRandomPokemon = () =>
     .get(import.meta.env.VITE_API_URL + `pokemons/random`)
     .then((res) => res.data)
     .catch((error) => console.error(error));
+
+export const getPokemonByName = (name) =>
+  axios
+    .get(import.meta.env.VITE_API_URL + `pokemons/name/${name}`)
+    .then((res) => res.data)
+    .catch((error) => console.error(error));

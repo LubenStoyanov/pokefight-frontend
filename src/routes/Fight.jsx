@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Image } from "@chakra-ui/react";
-import { useLoaderData } from "react-router-dom";
+import { redirect, useLoaderData, useNavigate } from "react-router-dom";
 import { getOnePokemon, getRandomPokemon } from "../api/axios";
+import damage from "../utils/damage";
 
 export async function loader({ params }) {
   const { id } = params;
@@ -12,17 +13,59 @@ export async function loader({ params }) {
 
 export default function Fight() {
   const { pokemon, randomPokemon } = useLoaderData();
-  const [healthPlayer, setHealthPlayer] = useState(0);
-  const [healthComp, setHealthComp] = useState(0);
+
+  const navigate = useNavigate();
+
+  const [healthPlayer, setHealthPlayer] = useState(pokemon.base["HP"]);
+  const [healthComp, setHealthComp] = useState(randomPokemon.base["HP"]);
+  const [turnPlayer, setTurnPlayer] = useState(true);
+
+  const handleClick = () => {
+    const damagePlayer = damage(
+      pokemon.base["Attack"],
+      randomPokemon.base["Defense"],
+      pokemon.base["Speed"],
+      randomPokemon.base["Speed"]
+    );
+    const damageComp = damage(
+      randomPokemon.base["Attack"],
+      pokemon.base["Defense"],
+      randomPokemon.base["Speed"],
+      pokemon.base["Speed"]
+    );
+
+    const newHealthComp = healthComp - damagePlayer;
+    const newHealthPlayer = healthPlayer - damageComp;
+
+    if (newHealthComp < 1) return navigate("/win");
+    if (newHealthPlayer < 1) return navigate("/lose");
+
+    turnPlayer
+      ? setHealthComp((h) => (h = newHealthComp))
+      : setHealthPlayer((h) => (h = newHealthPlayer));
+
+    setTurnPlayer((t) => !t);
+  };
+
   return (
     <div>
+      <p>{healthComp < 0 ? 0 : healthComp}</p>
       <Image
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randomPokemon.id}.png`}
       />
+
+      <p>{healthPlayer < 0 ? 0 : healthPlayer}</p>
       <Image
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemon.id}.png`}
       />
-      <Button>Attack</Button>
+      <Button onClick={handleClick}>Attack</Button>
     </div>
   );
 }
+
+// startBattle[x];
+// processAttack(pokemonA, pokemonB, attack);
+// checkWinningCondition;
+// gameCanContinue;
+// showWinningScreen;
+// showLosingScreen;

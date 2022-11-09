@@ -1,7 +1,9 @@
 import { Wrap, Image, Box, Heading, VStack } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
+import { useEffect } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import { getPokemons } from "../api/axios";
+import { SearchContext } from "../utils/searchContext";
 
 export async function loader({ params }) {
   try {
@@ -15,10 +17,16 @@ export async function loader({ params }) {
 
 export default function Pokemons() {
   const { pokemons } = useLoaderData();
+  // const searchContext = useContext(SearchContext);
+  // const { searchPokemon } = searchContext;
+
+  // useEffect(() => {
+  //   console.log(searchPokemon);
+  // }, [searchPokemon]);
   return (
     <Wrap>
       {pokemons.map((p) => (
-        <Link to={`/pokemons/${p.id}`} key={p.id}>
+        <Link to={`/select/pokemons/id/${p.id}`} key={p.id}>
           <VStack>
             <Heading as="h2" size="md">
               {p.name.english}
