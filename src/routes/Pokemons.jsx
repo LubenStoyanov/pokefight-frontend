@@ -39,12 +39,13 @@ export default function Pokemons() {
           borderColor="#ffcc03"
           borderWidth="1px"
           borderRadius="15px"
-          boxShadow="md"
+          boxShadow='2xl'
+          rounded='md'
           boxSize="300px"
           display="flex"
           justify="center">
             <Heading 
-            p="5px"
+            mt="15px"
             as="h2" size="md"
             fontFamily='ARCADECLASSIC'
             letterSpacing={3}
@@ -56,8 +57,15 @@ export default function Pokemons() {
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${p.id}.png`}
                  boxSize="150px"
               />
-              <Button
-              >Click</Button>
+              <Link 
+                to={`/select/pokemons/id/${p.id}`} 
+                key={p.id}
+                _hover={{
+                  background: "#FB1B1B"
+                }}
+              >
+                <Image src={'/icons/pokeball.svg'} boxSize="35px" mt={10} />
+                </Link>
             </Box>
           </VStack>
         </Link>

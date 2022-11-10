@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button, HStack, Image, VStack } from "@chakra-ui/react";
-import { redirect, useLoaderData, useNavigate } from "react-router-dom";
+import { Box, Button, HStack, Image, VStack } from "@chakra-ui/react";
+import { redirect, useLoaderData, useNavigate, Link } from "react-router-dom";
 import { getOnePokemon, getRandomPokemon } from "../api/axios";
 import damage from "../utils/damage";
 import { Animate, AnimateKeyframes } from "react-simple-animate";
@@ -60,8 +60,24 @@ export default function Fight() {
   };
 
   return (
-    <HStack>
-      <VStack>
+    <HStack 
+      backgroundImage="url('/icons/fight.png')"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize="cover"
+/*       display="flex"
+      alignItems="center" 
+      justifyContent="center" 
+      flexDirection="column" */
+/*       backgroundColor="#37796C"
+      opacity="0.8" */>
+      <Box
+      maxW="100%"
+      height="100vh"
+      display="flex"
+      justifyContent="center" 
+      >
+      <VStack position="absolute">
         <p>{healthComp < 0 ? 0 : healthComp}</p>
         <AnimateKeyframes
           play={compAttack}
@@ -76,6 +92,12 @@ export default function Fight() {
         >
           <Image
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randomPokemon.id}.png`}
+            boxSize="10em"
+            position= "absolute"
+            left= "15em"
+            top= "15em"
+            
+          
           />
         </AnimateKeyframes>
 
@@ -93,11 +115,39 @@ export default function Fight() {
         >
           <Image
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemon.id}.png`}
+            boxSize="15em"
+            position= "absolute"
+            top= "15em"
+            left= "-15em"
           />
         </AnimateKeyframes>
-        <Button onClick={handleClick}>Attack</Button>
+        <Button 
+         onClick={handleClick}
+          display="flex"
+          // mt="55px"
+          justifyContent="space-between"
+          gap="8px"
+          fontFamily='ARCADECLASSIC'
+          letterSpacing={3}
+          bg="#fff"
+          color="#E54222"
+          boxShadow='md'
+          rounded='md'
+          fontSize={20}
+          borderRadius="100px"
+          _hover={{
+            background: " #CE2211",
+            color:"#fff"
+            }}
+          _focus={{
+              background: " #CE2211",
+              color:"#fff"
+            }} 
+        ><Image src={"/icons/pokeball.svg"} 
+        boxSize="0.9em"/>Attack</Button>
       </VStack>
-      <p>Dodged</p>
+      </Box>
+  {/* <p>Dodged</p> */}
     </HStack>
   );
 }

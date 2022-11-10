@@ -16,7 +16,8 @@ export default function Game() {
       rowGap={5}
       backgroundImage="url('icons/game.jpg')"
       backgroundPosition="center"
-      backgroundRepeat="no-repeat" 
+      backgroundRepeat="no-repeat"
+      backgroundSize="cover" 
 
       >
         <Heading
