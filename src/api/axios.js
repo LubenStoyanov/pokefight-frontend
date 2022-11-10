@@ -23,3 +23,9 @@ export const getPokemonByName = (name) =>
     .get(import.meta.env.VITE_API_URL + `pokemons/name/${name}`)
     .then((res) => res.data)
     .catch((error) => console.error(error));
+
+export const getOpponents = (amount) =>
+  axios
+    .get(import.meta.env.VITE_API_URL + `pokemons/race/${amount}`)
+    .then((res) => res.data)
+    .catch((error) => console.error);
