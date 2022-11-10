@@ -28,18 +28,21 @@ export default function Game() {
         >Pokéfight</Heading>
         <Link to={"/select"}>
           <Button
-            fontFamily="Orbitron"
+            fontFamily="ARCADECLASSIC"
             letterSpacing={3}
             bg="#ffcc03"
             color="#1F2231"
             boxShadow='md'
             rounded='md'
+            mt={5}
+            fontSize={20}
             _hover={{
-              background: "#01DEE6",
-              color: "#1F2231",
+              background: "#2a75bb",
+              color: "#fff",
             }}
             _focus={{
-              background: "#01DEE6",
+              background: "#3c5aa6",
+              color: "#fff"
             }}
           >Start</Button>
         </Link>
