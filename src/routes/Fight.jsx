@@ -3,7 +3,7 @@ import { Button, HStack, Image, VStack } from "@chakra-ui/react";
 import { redirect, useLoaderData, useNavigate } from "react-router-dom";
 import { getOnePokemon, getRandomPokemon } from "../api/axios";
 import damage from "../utils/damage";
-import { Animate, AnimateKeyframes } from "react-simple-animate";
+import { AnimateKeyframes } from "react-simple-animate";
 
 export async function loader({ params }) {
   const { id } = params;
