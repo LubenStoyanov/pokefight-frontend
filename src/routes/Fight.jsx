@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, HStack, Image, VStack } from "@chakra-ui/react";
-import { redirect, useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { getOnePokemon, getRandomPokemon } from "../api/axios";
 import damage from "../utils/damage";
 import { AnimateKeyframes } from "react-simple-animate";
@@ -22,6 +22,7 @@ export default function Fight() {
   const [turnPlayer, setTurnPlayer] = useState(true);
   const [playerAttack, setPlayerAttack] = useState(false);
   const [compAttack, setComptAttack] = useState(false);
+  const [dodge, setDodge] = useState(false);
   // const [damagePlayer, setDamagePlayer] = useState(false);
   // const [damagePlayer, setDamagePlayer] = useState(false);
 
@@ -39,6 +40,9 @@ export default function Fight() {
       pokemon.base["Speed"]
     );
 
+    damageComp === 0 || damagePlayer === 0 ? setDodge((d) => true) : false;
+
+    setTimeout(() => setDodge((d) => false), 1000);
     const newHealthComp = healthComp - damagePlayer;
     const newHealthPlayer = healthPlayer - damageComp;
 
@@ -97,7 +101,7 @@ export default function Fight() {
         </AnimateKeyframes>
         <Button onClick={handleClick}>Attack</Button>
       </VStack>
-      <p>Dodged</p>
+      <p style={{ visibility: dodge ? "visible" : "hidden" }}>Dodged</p>
     </HStack>
   );
 }
