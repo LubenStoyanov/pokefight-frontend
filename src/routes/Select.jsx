@@ -1,6 +1,6 @@
-import { Button, Heading, Box } from "@chakra-ui/react";
+import { Heading, Box } from "@chakra-ui/react";
 import TypeOptions from "../components/TypeOptions";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import React from "react";
 import Searchbar from "../components/Searchbar";
 
@@ -10,7 +10,7 @@ export default function Select() {
       <Box
       bg="#0A285F"
       maxW="100%"
-      height="100vh"
+      minH="100vh"
       display="flex" 
       flexDirection="column"
       alignItems="center"
@@ -28,9 +28,6 @@ export default function Select() {
           Select
         </Heading>
         <Searchbar />
-        <Link to={`/select/pokemons/All`}>
-          <Button>All</Button>
-        </Link>
         <TypeOptions />
         <Outlet />
       </Box>

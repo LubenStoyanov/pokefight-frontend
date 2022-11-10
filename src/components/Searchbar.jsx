@@ -18,7 +18,8 @@ export default function Searchbar() {
           <Input
             variant="outline"
             placeholder="Search your pokemon"
-            fontFamily='Sono'
+            fontFamily='ARCADECLASSIC'
+            letterSpacing={2}
             // onChange={handleOnchange}
             name="query"
             borderColor="#FFCC00"
