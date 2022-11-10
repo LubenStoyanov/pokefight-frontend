@@ -30,6 +30,7 @@ export default function Pokemon() {
       <Heading as="h1">{pokemon.name.english}</Heading>
       <Image
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
+        boxSize="200px"
       />
       <HStack>
         {baseStats.map((stat) => (
