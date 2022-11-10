@@ -67,7 +67,10 @@ button:focus-visible {
   }
 }
  */
-
+@font-face {
+  font-family: "Pokemon Solid";
+  src: url("fonts/Pokemon Solid.ttf");
+}
 * {
   box-sizing: border-box;
   margin: 0 auto;

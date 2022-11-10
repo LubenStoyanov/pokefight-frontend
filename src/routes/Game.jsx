@@ -20,14 +20,17 @@ export default function Game() {
 
       >
         <Heading
-          fontFamily="Nabla"
+          fontFamily="Pokemon Solid"
           fontSize='4em'
+          color="#fff"
+          letterSpacing={7}
+          textShadow="2px 2px 4px #ff0000"
         >Pokéfight</Heading>
         <Link to={"/select"}>
           <Button
             fontFamily="Orbitron"
             letterSpacing={3}
-            bg="#FFE433"
+            bg="#ffcc03"
             color="#1F2231"
             boxShadow='md'
             rounded='md'
