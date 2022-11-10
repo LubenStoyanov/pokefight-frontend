@@ -42,6 +42,9 @@ export default function Pokemon() {
       <Link to={`/fight/${pokemon.id}`}>
         <Button>Go fight!</Button>
       </Link>
+      <Link to={`/race/${pokemon.id}`}>
+        <Button>Go race!</Button>
+      </Link>
     </VStack>
   );
 }

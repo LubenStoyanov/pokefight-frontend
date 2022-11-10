@@ -9,6 +9,7 @@ import Error from "./routes/Error";
 import "./index.css";
 import Select from "./routes/Select";
 import Fight, { loader as fightLoader } from "./routes/Fight";
+import Race, { loader as raceLoader } from "./routes/Race";
 import SearchContextProvider from "./utils/searchContext";
 import WinPlayer from "./routes/WinPlayer";
 import WinComputer from "./routes/WinComputer";
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
     path: "/fight/:id",
     element: <Fight />,
     loader: fightLoader,
+  },
+  {
+    path: "/race/:id",
+    element: <Race />,
+    loader: raceLoader,
   },
   {
     path: "/win",
