@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import {
@@ -14,17 +13,14 @@ import {
 } from "@chakra-ui/react";
 import { getOnePokemon } from "../api/axios";
 
-
-
-// export async function loader({ params }) {
-//   try {
-//     const pokemon = await getOnePokemon(params.id);
-//     return { pokemon };
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
+export async function loader({ params }) {
+  try {
+    const pokemon = await getOnePokemon(params.id);
+    return { pokemon };
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 export default function Pokemon() {
   const { pokemon } = useLoaderData();
@@ -32,28 +28,32 @@ export default function Pokemon() {
   const baseStats = Object.entries(pokemon.base);
   return (
     <VStack width="100%">
-      <Heading 
+      <Heading
         as="h2"
-        fontFamily='ARCADECLASSIC'
+        fontFamily="ARCADECLASSIC"
         letterSpacing={3}
         color="#ffcc03"
-        >{pokemon.name.english}</Heading>
-      <Box 
+      >
+        {pokemon.name}
+      </Heading>
+      <Box
         display="flex"
         justifyContent="space-between"
         width="500px"
-        h="300px">
+        h="300px"
+      >
         <Image
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.imageId}.png`}
           boxSize="200px"
         />
-        <HStack 
+        <HStack
           display="flex"
           alignItems="flex-start"
           flexDirection="column"
-          fontFamily='ARCADECLASSIC'
+          fontFamily="ARCADECLASSIC"
           letterSpacing={3}
-          color="#ffcc03">
+          color="#ffcc03"
+        >
           {baseStats.map((stat) => (
             <Stat key={stat[0] + stat[1]}>
               <StatLabel>{stat[0]}</StatLabel>
@@ -62,15 +62,12 @@ export default function Pokemon() {
           ))}
         </HStack>
       </Box>
-        <Link to={`/fight/${pokemon.id}`}>
-          <Button>Go fight!</Button>
-        </Link>
-        <Link to={`/race/${pokemon.id}`}>
-          <Button>Go race!</Button>
-        </Link>
-
+      <Link to={`/fight/${pokemon.imageId}`}>
+        <Button>Go fight!</Button>
+      </Link>
+      <Link to={`/race/${pokemon.imageId}`}>
+        <Button>Go race!</Button>
+      </Link>
     </VStack>
   );
 }
-
-
