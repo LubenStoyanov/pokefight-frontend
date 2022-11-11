@@ -34,7 +34,7 @@ export default function Pokemon() {
         letterSpacing={3}
         color="#ffcc03"
       >
-        {pokemon.name.english}
+        {pokemon.name}
       </Heading>
       <Box
         display="flex"
@@ -43,7 +43,7 @@ export default function Pokemon() {
         h="300px"
       >
         <Image
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.imageId}.png`}
           boxSize="200px"
         />
         <HStack
@@ -62,10 +62,10 @@ export default function Pokemon() {
           ))}
         </HStack>
       </Box>
-      <Link to={`/fight/${pokemon.id}`}>
+      <Link to={`/fight/${pokemon.imageId}`}>
         <Button>Go fight!</Button>
       </Link>
-      <Link to={`/race/${pokemon.id}`}>
+      <Link to={`/race/${pokemon.imageId}`}>
         <Button>Go race!</Button>
       </Link>
     </VStack>

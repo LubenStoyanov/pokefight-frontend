@@ -1,6 +1,7 @@
 import { Container, Heading, VStack, Box } from "@chakra-ui/react";
 import React from "react";
 import { getPlayers } from "../api/axios";
+import { useLoaderData } from "react-router-dom";
 
 export async function loader() {
   try {
@@ -12,7 +13,8 @@ export async function loader() {
 }
 
 export default function Leaderboard() {
-  // const { players } = useLoaderData();
+  const { players } = useLoaderData();
+  console.log(players);
   return (
     <Box bg="#0A285F" maxW="100%" minH="100vh">
       <Container>
@@ -26,7 +28,14 @@ export default function Leaderboard() {
         >
           Leaderboard
         </Heading>
-        {/* <VStack>{players.map((p) => p.name)}</VStack> */}
+        <VStack>
+          {players.map((p) => (
+            <>
+              <Heading color="white">{p.username}</Heading>
+              <Heading color="white">{p.wins / p.games}</Heading>
+            </>
+          ))}
+        </VStack>
       </Container>
     </Box>
   );

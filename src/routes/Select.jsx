@@ -1,10 +1,21 @@
-import { Heading, Box, Button } from "@chakra-ui/react";
+import { Heading, Box, Button, Input, FormLabel } from "@chakra-ui/react";
 import TypeOptions from "../components/TypeOptions";
-import { Link, Outlet } from "react-router-dom";
-import React from "react";
+import { Form, Link, Outlet, redirect } from "react-router-dom";
+import React, { useState, useContext } from "react";
 import Searchbar from "../components/Searchbar";
+import { SearchContext } from "../utils/searchContext";
+
+export async function action() {
+  return redirect("/select");
+}
 
 export default function Select() {
+  const searchContext = useContext(SearchContext);
+  const { setCurrentPlayer } = searchContext;
+  const handleSubmit = (e) => {
+    setCurrentPlayer((n) => e.target.firstChild.value);
+  };
+
   return (
     <div>
       <Box
@@ -30,6 +41,17 @@ export default function Select() {
         <Link to={"/leaderboard"}>
           <Button>Leaderboard</Button>
         </Link>
+        <Form method="post" onSubmit={handleSubmit} action="/select">
+          <Input
+            color="white"
+            fontFamily="ARCADECLASSIC"
+            letterSpacing={3}
+            name="username"
+          />
+          <Heading color="white" fontFamily="ARCADECLASSIC" letterSpacing={3}>
+            Enter your username
+          </Heading>
+        </Form>
         <Searchbar />
         <TypeOptions />
         <Outlet />

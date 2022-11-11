@@ -12,7 +12,7 @@ export async function loader({ request }) {
     if (name.length === 0) return redirect("/select");
     const pokemons = await getPokemonByName(capitalize(name));
 
-    if (!pokemons) return redirect("select");
+    if (!pokemons) return redirect("/select");
     // return { pokemon };
     // return redirect(`/select/pokemons/id/${pokemon.id}`);
     return { pokemons };
@@ -26,7 +26,7 @@ export default function SearchByName() {
   return (
     <Wrap display="flex" justify="center" maxW="65%">
       {pokemons.map((p) => (
-        <Link to={`/select/pokemons/id/${p.id}`} key={p.id}>
+        <Link to={`/select/pokemons/id/${p.imageId}`} key={p.imageId}>
           <VStack
             backgroundColor="#0075BE"
             border="solid"
@@ -50,7 +50,7 @@ export default function SearchByName() {
             </Heading>
             <Box boxSize="xs">
               <Image
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${p.id}.png`}
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${p.imageId}.png`}
                 boxSize="150px"
               />
               <Button>Click</Button>

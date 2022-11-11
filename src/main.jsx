@@ -7,12 +7,12 @@ import Pokemons, { loader as pokemonsLoader } from "./routes/Pokemons";
 import Pokemon, { loader as pokemonLoader } from "./routes/Pokemon";
 import Error from "./routes/Error";
 import "./index.css";
-import Select from "./routes/Select";
+import Select, { action as selectAction } from "./routes/Select";
 import Fight, { loader as fightLoader } from "./routes/Fight";
 import Race, { loader as raceLoader } from "./routes/Race";
 import SearchContextProvider from "./utils/searchContext";
-import WinPlayer from "./routes/WinPlayer";
-import WinComputer from "./routes/WinComputer";
+import WinPlayer, { loader as winPlayerLoader } from "./routes/WinPlayer";
+import WinComputer, { loader as winComputerLoader } from "./routes/WinComputer";
 import SearchByName, { loader as nameLoader } from "./routes/SearchByName";
 import Leaderboard, { loader as leaderboardLoader } from "./routes/Leaderboard";
 
@@ -25,6 +25,7 @@ const router = createBrowserRouter([
   {
     path: "/select",
     element: <Select />,
+    action: selectAction,
     children: [
       {
         path: "/select/pokemons/:type",
@@ -54,12 +55,14 @@ const router = createBrowserRouter([
     loader: raceLoader,
   },
   {
-    path: "/win",
+    path: "/win/:player",
     element: <WinPlayer />,
+    loader: winPlayerLoader,
   },
   {
-    path: "/lose",
+    path: "/lose/:player",
     element: <WinComputer />,
+    loader: winComputerLoader,
   },
   {
     path: "/leaderboard",

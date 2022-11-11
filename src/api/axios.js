@@ -28,10 +28,19 @@ export const getOpponents = (amount) =>
   axios
     .get(import.meta.env.VITE_API_URL + `pokemons/race/${amount}`)
     .then((res) => res.data)
-    .catch((error) => console.error);
+    .catch((error) => console.error(error));
 
 export const getPlayers = () =>
   axios
-    .get(import.meta.env.VITE_API_URL + "leaderboard")
+    .get(import.meta.env.VITE_API_URL + "pokemons/leaderboard")
+    .then((res) => res.data)
+    .catch((error) => console.error(error));
+
+export const updatePlayer = (name, win) =>
+  axios
+    .post(import.meta.env.VITE_API_URL + `pokemons/updateplayer`, {
+      username: name,
+      win: win,
+    })
     .then((res) => res.data)
     .catch((error) => console.error(error));

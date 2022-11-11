@@ -23,15 +23,22 @@ export default function Race() {
   const [start, setStart] = useState(false);
 
   return (
-    <Flex justifyContent="flex-end">
-      <Box justifySelf="flex-end">
+    <Flex
+      justifyContent="flex-start"
+      backgroundImage="url('/icons/fight.png')"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize="cover"
+      height="100vh"
+    >
+      <Box m="0" justifySelf="flex-start">
         {pokemons.map((p) => (
           <AnimateKeyframes
-            key={p.id}
+            key={p.imageId}
             play={start}
             iterationCount={1}
             // delay={3}
-            duration={p.base["Speed"] - 10}
+            duration={p.base.speed - 10}
             keyframes={[
               `transform: translateX(${screen.width}px)`,
               "transform: translateX(0px)",
@@ -39,7 +46,7 @@ export default function Race() {
           >
             <Image
               boxSize="100px"
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${p.id}.png`}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${p.imageId}.png`}
             />
           </AnimateKeyframes>
         ))}
