@@ -14,6 +14,7 @@ import SearchContextProvider from "./utils/searchContext";
 import WinPlayer from "./routes/WinPlayer";
 import WinComputer from "./routes/WinComputer";
 import SearchByName, { loader as nameLoader } from "./routes/SearchByName";
+import Leaderboard, { loader as leaderboardLoader } from "./routes/Leaderboard";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
   {
     path: "/fight/:id",
     element: <Fight />,
@@ -60,6 +60,11 @@ const router = createBrowserRouter([
   {
     path: "/lose",
     element: <WinComputer />,
+  },
+  {
+    path: "/leaderboard",
+    element: <Leaderboard />,
+    loader: leaderboardLoader,
   },
 ]);
 
