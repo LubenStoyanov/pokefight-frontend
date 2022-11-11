@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import Game from "./routes/Game";
 import Pokemons, { loader as pokemonsLoader } from "./routes/Pokemons";
-// import Pokemon, { loader as pokemonLoader } from "./routes/Pokemon";
+import Pokemon, { loader as pokemonLoader } from "./routes/Pokemon";
 import Error from "./routes/Error";
 import "./index.css";
 import Select from "./routes/Select";
@@ -14,6 +14,7 @@ import SearchContextProvider from "./utils/searchContext";
 import WinPlayer from "./routes/WinPlayer";
 import WinComputer from "./routes/WinComputer";
 import SearchByName, { loader as nameLoader } from "./routes/SearchByName";
+import Leaderboard, { loader as leaderboardLoader } from "./routes/Leaderboard";
 
 const router = createBrowserRouter([
   {
@@ -35,14 +36,13 @@ const router = createBrowserRouter([
         element: <SearchByName />,
         loader: nameLoader,
       },
-      // {
-      //   path: "/select/pokemons/id/:id",
-      //   element: <Pokemon />,
-      //   loader: pokemonLoader,
-      // },
+      {
+        path: "/select/pokemons/id/:id",
+        element: <Pokemon />,
+        loader: pokemonLoader,
+      },
     ],
   },
-
   {
     path: "/fight/:id",
     element: <Fight />,
@@ -60,6 +60,11 @@ const router = createBrowserRouter([
   {
     path: "/lose",
     element: <WinComputer />,
+  },
+  {
+    path: "/leaderboard",
+    element: <Leaderboard />,
+    loader: leaderboardLoader,
   },
 ]);
 

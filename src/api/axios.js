@@ -29,3 +29,9 @@ export const getOpponents = (amount) =>
     .get(import.meta.env.VITE_API_URL + `pokemons/race/${amount}`)
     .then((res) => res.data)
     .catch((error) => console.error);
+
+export const getPlayers = () =>
+  axios
+    .get(import.meta.env.VITE_API_URL + "leaderboard")
+    .then((res) => res.data)
+    .catch((error) => console.error(error));
