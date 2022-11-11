@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 export default function Game() {
   return (
     <div>
-   <Box    
-      maxW="100%"
-      height="100vh"
-      display="flex" 
-      alignItems="center" 
-      justifyContent="center" 
-      flexDirection="column"
-      rowGap={5}
-      backgroundImage="url('icons/game.jpg')"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat" 
-
+      <Box
+        maxW="100%"
+        height="100vh"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="column"
+        rowGap={5}
+        backgroundImage="url('icons/game.jpg')"
+        backgroundPosition="center"
+        backgroundRepeat="no-repeat"
+        backgroundSize="cover"
       >
         <Heading
           fontFamily="Pokemon Solid"

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import {
@@ -13,14 +14,17 @@ import {
 } from "@chakra-ui/react";
 import { getOnePokemon } from "../api/axios";
 
-export async function loader({ params }) {
-  try {
-    const pokemon = await getOnePokemon(params.id);
-    return { pokemon };
-  } catch (error) {
-    console.error(error);
-  }
-}
+
+
+// export async function loader({ params }) {
+//   try {
+//     const pokemon = await getOnePokemon(params.id);
+//     return { pokemon };
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
 
 export default function Pokemon() {
   const { pokemon } = useLoaderData();
@@ -68,3 +72,5 @@ export default function Pokemon() {
     </VStack>
   );
 }
+
+
