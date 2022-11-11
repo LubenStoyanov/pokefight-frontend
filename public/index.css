@@ -68,12 +68,12 @@ button:focus-visible {
 }
  */
 @font-face {
-  font-family: "Pokemon Solid";
-  src: url("fonts/Pokemon Solid.ttf");
+  font-family: "Pokemon-Solid";
+  src: url("../public/fonts/Pokemon-Solid.ttf", format("opentype"));
 }
 @font-face {
   font-family: "ARCADECLASSIC";
-  src: url("fonts/ARCADECLASSIC.TTF");
+  src: url("../public/fonts/ARCADECLASSIC.TTF", format("opentype"));
 }
 * {
   box-sizing: border-box;

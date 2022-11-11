@@ -18,32 +18,33 @@ export default function Searchbar() {
           <Input
             variant="outline"
             placeholder="Search your pokemon"
-            fontFamily='ARCADECLASSIC'
+            fontFamily="ARCADECLASSIC"
             letterSpacing={2}
             // onChange={handleOnchange}
             name="query"
             borderColor="#FFCC00"
             borderWidth={3}
             color="#FFCC00"
-
           />
-          <Button 
+          <Button
             type="submit"
-            fontFamily='ARCADECLASSIC'
+            fontFamily="ARCADECLASSIC"
             letterSpacing={3}
             bg="#FFCC00"
             color="#0A285F"
-            boxShadow='md'
-            rounded='md'
+            boxShadow="md"
+            rounded="md"
             _hover={{
               background: "#D5A100",
               color: "#0A285F",
             }}
             _focus={{
               background: "#3c5aa6",
-              color: "#fff"
+              color: "#fff",
             }}
-          >Search</Button>
+          >
+            Search
+          </Button>
         </HStack>
       </Form>
     </div>

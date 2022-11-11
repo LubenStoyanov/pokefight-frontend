@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, HStack, Image, VStack } from "@chakra-ui/react";
-import { redirect, useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { getOnePokemon, getRandomPokemon } from "../api/axios";
 import damage from "../utils/damage";
 import { AnimateKeyframes } from "react-simple-animate";
@@ -22,8 +22,9 @@ export default function Fight() {
   const [turnPlayer, setTurnPlayer] = useState(true);
   const [playerAttack, setPlayerAttack] = useState(false);
   const [compAttack, setComptAttack] = useState(false);
-  // const [damagePlayer, setDamagePlayer] = useState(false);
-  // const [damagePlayer, setDamagePlayer] = useState(false);
+  const [dodge, setDodge] = useState(false);
+  const [showDamage, setShowDamage] = useState(false);
+  const [currentDamage, setCurrentDamage] = useState({ pl: true, d: 0 });
 
   const handleClick = async () => {
     const damagePlayer = damage(
@@ -38,6 +39,18 @@ export default function Fight() {
       randomPokemon.base["Speed"],
       pokemon.base["Speed"]
     );
+    console.log(damagePlayer, damageComp);
+
+    turnPlayer
+      ? setCurrentDamage((cd) => ({ pl: true, d: damagePlayer }))
+      : setCurrentDamage((cd) => ({ pl: false, d: damageComp }));
+    console.log(currentDamage);
+
+    damageComp === 0 || damagePlayer === 0 ? setDodge((d) => true) : false;
+    !dodge ? setShowDamage((d) => true) : false;
+
+    setTimeout(() => setShowDamage((sd) => false), 1000);
+    setTimeout(() => setDodge((d) => false), 1000);
 
     const newHealthComp = healthComp - damagePlayer;
     const newHealthPlayer = healthPlayer - damageComp;
@@ -97,7 +110,12 @@ export default function Fight() {
         </AnimateKeyframes>
         <Button onClick={handleClick}>Attack</Button>
       </VStack>
-      <p>Dodged</p>
+      <VStack>
+        <p style={{ visibility: dodge ? "visible" : "hidden" }}>Dodged</p>
+        <p style={{ visibility: showDamage ? "visible" : "hidden" }}>
+          {currentDamage.d}
+        </p>
+      </VStack>
     </HStack>
   );
 }
