@@ -55,8 +55,10 @@ export default function TypeOptions() {
       {pokeTypes.map((type) => {
         const iconPath = "/icons/poke_type/" + type.toLowerCase() + ".png";
         return (
+
           <Box key={type}>
-            <Link to={`/select/pokemons/${type}`}>
+            <Link to={`/select/pokemons/${type}`} >
+
               <Button
                 color={colorType[type]}
                 fontFamily="ARCADECLASSIC"

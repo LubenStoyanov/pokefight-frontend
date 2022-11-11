@@ -66,14 +66,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
- */
 @font-face {
   font-family: "Pokemon-Solid";
-  src: url("../public/fonts/Pokemon-Solid.ttf", format("opentype"));
+  src: url("fonts/Pokemon-Solid.ttf") format("truetype");
 }
 @font-face {
   font-family: "ARCADECLASSIC";
-  src: url("../public/fonts/ARCADECLASSIC.TTF", format("opentype"));
+  src: url("fonts/ARCADECLASSIC.TTF")format("truetype");
+
 }
 * {
   box-sizing: border-box;
